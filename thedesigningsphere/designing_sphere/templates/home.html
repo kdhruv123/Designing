@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>HOME PAGE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-tFz+JxSqk4fsGmf4+iVZFy2tI6AmPKy0AQPz+EhLZK0piR+e1piY8UZ2qEn15As6rW1HZvoWR5StJE5lfk1z+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: white;
+      font-family: "Gemerald", serif;
+      position: relative;
+    }
+    footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Style for the credits */
+        .credits {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    .video-container {
+      position: static;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease;
+    }
+    .Projectstext {
+  top: 10px;
+  text-align: center;
+  background-color: rgba(6, 5, 8, 0.4);
+  align-items: center;
+  border-radius: 30px;
+  display: static;
+  height: 50px;
+  width: 17%;
+  left: 43%;
+  color: rgba(204, 88, 223, 1);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+
+.Ourteam {
+  top:50px;
+  margin: auto;
+  text-align: center;
+  color: black;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+.Ourprojects {
+  top:50px;
+  margin: auto;
+  text-align: center;
+  color: black;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+.AboutUs{
+  top:50px;
+  margin: auto;
+  text-align: center;
+  color: black;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+<!--.Abouttext{-->
+<!--  top:50px;-->
+<!--  margin: auto;-->
+<!--  text-align: center;-->
+<!--  color: white;-->
+<!--  position: relative;-->
+<!--  z-index: 2;-->
+<!--  opacity: 0;-->
+<!--}-->
+
+.animate {
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(50%);
+    opacity: 1;
+  }
+}
+
+   .blur-container {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffefdd; /* Adjust the opacity as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: auto;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: auto; /* Adjust the width of the navbar container */
+  transition: width 10s ease; /* Transition for expanding the container */
+}
+.blur-container:hover {
+  width: auto;
+  height: 50px;
+}
+    .blur-container:hover .navbar-logo {
+  transform: translateX(50%); /* Move the logo to its original position on hover */
+}
+
+
+    .navbar-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+  width: 40px; /* Adjust logo size as needed */
+  height: 40px;
+  transition: transform 0.3s ease; /* Transition for moving the logo */
+}
+
+    .navbar-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+       transition: opacity 10s ease;
+    }
+    .blur-container:hover .navbar-links {
+     display: flex;
+}
+
+    .navbar-links li {
+      margin-right: 70px; /* Adjust the space between navbar links */
+    }
+
+    .navbar-links li:last-child {
+      margin-right: 70px;
+    }
+
+    .navbar-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 20px; /* Adjust font size as needed */
+    }
+
+    .navbar-links li a:hover {
+      color: black;
+      background-color: rgba(245, 189, 2, 0.7);
+      border-radius: 20px;
+      padding: 5px;
+      text-align: center;
+    }
+    .website-name {
+     font-family: "Javanese Text", sans-serif;
+  color: rgba(245, 189, 2, 0.7);
+  margin-top:10px;
+  margin-right:20px;
+  font-size: 20px;
+   transition: opacity 0s ease;
+}
+    .blur-container:hover .website-name {
+  opacity: 0; /* Ensure the website name remains visible on hover */
+}
+       .container {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: 450px; /* Adjust as needed */
+  background-color:  #ffefdd; /* White color with transparency */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+  overflow: hidden; /* Ensures the photo doesn't overflow */
+  opacity: 0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transition: transform 0.3s ease; /* Added transition for hover effect */
+  margin-left: auto;
+  margin-right: auto;
+}
+ .container:hover .name {
+            opacity: 0;
+        }
+        .container:hover img {
+            filter: blur(2px); /* Apply blur effect on hover */
+        }
+
+        .container:hover .description {
+            opacity: 1; /* Show description on hover */
+            transform: translateY(-50%); /* Move description upwards */
+        }
+        .namei {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+    text-shadow: 0px 0px 10px #FFFFFB;
+    font-weight: bold;
+  }
+        .container:hover .namei {
+            bottom: 50%;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 30%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+            color: white;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Add transition */
+        }
+
+    .animate-container {
+      animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .name {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+  }
+<!--  .container:nth-child(1) {-->
+<!--    margin-right: 20px; /* Adjust spacing between containers */-->
+<!--  }-->
+  .container-wrapper {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+       .glass-container {
+    position: relative;
+    overflow-x: hidden;
+    margin-top: 7%;
+    margin-bottom: 3%;
+    background: #ffefdd;
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 70px;
+    text-align: center;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .content {
+  text-align: center;
+  color: #333;
+  opacity: 0; /* Initially set opacity to 0 */
+}
+  .animate-content{
+  animation: slideInText 1.5s ease forwards;
+}
+@keyframes slideInText {
+  from {
+    opacity: 0; /* Start from below with 0 opacity */
+  }
+  to {
+    opacity: 1; /* Slide up to original position with full opacity */
+  }
+}
+    .footer {
+    background-color: #132c33;
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+.fcontainer {
+    background-color: black;
+    color: #ffffff;
+    padding: 100px;
+    width:100%;
+    text-align: center;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    max-height: 100px;
+}
+
+.credit {
+    position: absolute;
+    bottom: 10px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+.social-media {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    font-size: 20px;
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: center; /* Center align the items */
+}
+
+.social-icon {
+    color: white;
+    margin: 0 10px; /* Add margin to create spacing between icons */
+    text-decoration: none;
+}
+
+.social-icon img {
+    width: 40px; /* Adjust icon size as needed */
+    height: 40px;
+}
+
+.social-icon:hover {
+    color: #55acee; /* Change color on hover */
+}
+
+
+
+  </style>
+</head>
+
+<body>
+  <div class="video-container">
+      <video autoplay muted loop>
+      <source src="{% static '/bg.mp4' %}"  type="video/mp4">
+      </video>
+  </div>
+  <div class="blur-container" onmouseover="showNavbar()" onmouseleave="hideNavbar()">
+  <img src="{% static '/Logo.png' %}" alt="Brand Logo" class="navbar-logo">
+  <span class="website-name">Design Dynamo</span>
+  <ul class="navbar-links" id="navbar-links">
+    <li><a href="{% url 'project' %}">Projects</a></li>
+    <li><a href="{% url 'team' %}">Team</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+  </ul>
+</div>
+  <div class="Ourprojects">
+  <h1>Our Projects</h1>
+</div>
+
+<div class="container-wrapper" id="project-container-wrapper">
+  <div class="container" onclick="handleTeaserClick()">
+    <img src="{% static '/Teaser.png' %}" alt="Teasers">
+    <div class="namei">
+      <h5>Teasers</h5>
+    </div>
+  </div>
+  <div class="container" onclick="handleCGIClick()">
+    <img src="{% static '/cgi.png' %}" alt="CGI">
+    <div class="namei">
+      <h5>CGI Designs</h5>
+    </div>
+  </div>
+  <div class="container" onclick="handleGraphicClick()">
+    <img src="{% static '/graphic.png' %}" alt="Graphic design">
+    <div class="namei">
+      <h5>Graphic Design</h5>
+    </div>
+  </div>
+</div>
+  <div class='Ourteam'>
+    <h1>Our Team</h1>
+  </div>
+  <div class="container-wrapper">
+    <div class="container" onclick="handleDhruvKohliClick()">
+      <img src="{% static '/dhruvi.png' %}" alt="Dhruv Kohli">
+      <div class="name"><h5>Dhruv Kohli</h5></div>
+      <div class="description">
+            <h3>Dhruv Kohli</h3>
+            <h6><p>Co-Founder Of Design Dynamo</p></h6>
+        </div>
+    </div>
+    <div class="container" onclick="handleGautamGuptaClick()">
+      <img src="{% static '/gautam.png' %}" alt="Gautam Gupta">
+      <div class="name"><h5>Gautam Gupta</h5></div>
+       <div class="description">
+            <h3>Gautam Gupta</h3>
+            <h6><p>Co-Founder Of Design Dynamo</p></h6>
+        </div>
+    </div>
+  </div>
+  <div class='AboutUs'>
+    <h1>About Us</h1>
+  </div>
+  <div class="glass-container">
+  <div class="content animate"> <!-- Add the animate class here -->
+    <h6>
+At Design Dynamo, we're not just a design agency; we're your creative partners in bringing your vision to life. With a passion for design and a commitment to excellence, we specialize in delivering top-notch design solutions for a variety of projects.
+With a collective experience of over two years, our dynamic team brings a fresh perspective and innovative approach to every project we undertake. Whether you're looking to refresh your brand identity, create captivating marketing materials, or develop a stunning website, we've got you covered.Our agency thrives on creativity, collaboration, and exceeding expectations. We believe that great design has the power to elevate brands, captivate audiences, and drive success. That's why we work closely with our clients every step of the way, ensuring that their vision is brought to life with precision and flair.
+</h6>
+  </div>
+</div>
+    <div class="fcontainer">
+       <div class="social-media">
+        <a href="https://www.facebook.com/" class="social-icon">
+            <img src="{% static '/facebook.png' %}" alt="Facebook">
+        </a>
+        <a href="https://www.twitter.com/" class="social-icon">
+            <img src="{% static '/twitter.png' %}" alt="Twitter">
+        </a>
+        <a href="https://www.instagram.com/" class="social-icon">
+            <img src="{% static '/instagram.png' %}" alt="Instagram">
+        </a>
+        <!-- Add more social media icons as needed -->
+    </div>
+        <div class="credit">
+            <p>&copy; 2024 Design Dynamo. All rights reserved.</p>
+        </div>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Cache frequently accessed elements
+var throttled = false;
+var containers = document.querySelectorAll('.container');
+var content = document.querySelector('.content');
+var Ourteam = document.querySelector('.Ourteam');
+var Ourprojects = document.querySelector('.Ourprojects');
+var AboutUs = document.querySelector('.AboutUs');
+
+// Throttle scroll event listener to control the frequency of function calls
+window.addEventListener('scroll', function () {
+  var scrollPosition = window.scrollY;
+
+  if (!throttled) {
+    window.requestAnimationFrame(function () {
+      containers.forEach(function (container) {
+        var elementPosition = container.getBoundingClientRect().top;
+
+        if (elementPosition < window.innerHeight && elementPosition + container.clientHeight > 0) {
+          container.classList.add('animate-container');
+        } else {
+          container.classList.remove('animate-container');
+        }
+      });
+
+      throttled = false;
+    });
+
+    throttled = true;
+  }
+});
+
+// Use requestAnimationFrame for smoother animations
+window.addEventListener('scroll', function () {
+  var scrollPosition = window.scrollY;
+  var elementPosition = content.getBoundingClientRect().top;
+
+  window.requestAnimationFrame(function () {
+    if (elementPosition < window.innerHeight && elementPosition + content.clientHeight > 0) {
+      content.classList.add('animate-content');
+    } else {
+      content.classList.remove('animate-content');
+    }
+  });
+});
+
+// Text animations for Our Team, Our Projects, About Us
+window.addEventListener('scroll', function () {
+  var scrollPosition = window.scrollY;
+
+  checkVisibilityAndAnimate(Ourteam, '.Ourteam');
+  checkVisibilityAndAnimate(Ourprojects, '.Ourprojects');
+  checkVisibilityAndAnimate(AboutUs, '.AboutUs');
+});
+
+function checkVisibilityAndAnimate(element, className) {
+  var elementPosition = element.getBoundingClientRect().top;
+
+  window.requestAnimationFrame(function () {
+    if (elementPosition < window.innerHeight && elementPosition + element.clientHeight > 0) {
+      element.classList.add('animate');
+    } else {
+      element.classList.remove('animate');
+    }
+  });
+}
+document.addEventListener('scroll', function () {
+  // Get the video element
+  const video = document.getElementById('bg-video');
+
+  // Calculate the scroll position as a percentage of the total scrollable height
+  const scrollPosition = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = Math.min(scrollPosition / maxScroll, 1);
+
+  // Apply a blur effect proportional to the scroll percentage
+  const maxBlur = 30; // Maximum blur value (adjust as needed)
+  const blurValue = scrollPercent * maxBlur;
+  video.style.filter = `blur(${blurValue}px)`;
+});
+
+
+// Add click event listeners to respective containers
+document.getElementById('container-Teaser').addEventListener('click', handleTeaserClick);
+document.getElementById('container-other-projects').addEventListener('click', handleOtherProjectsClick);
+document.getElementById('container-dhruv-kohli').addEventListener('click', handleDhruvKohliClick);
+document.getElementById('container-gautam-gupta').addEventListener('click', handleGautamGuptaClick);
+document.getElementById('container-sai-vijay').addEventListener('click', handleSaiVijayClick);
+document.getElementById('container-subhash').addEventListener('click', handleSubhashClick);
+
+// Handle click events
+function handleTeaserClick() {
+  window.location.href = 'http://127.0.0.1:8000/teaser';
+}
+
+function handleCGIClick() {
+  window.location.href = 'http://127.0.0.1:8000/CGI';
+}
+
+function handleGraphicClick() {
+  window.location.href = 'http://127.0.0.1:8000/graphic';
+}
+
+function handleDhruvKohliClick() {
+  window.location.href = 'http://127.0.0.1:8000/dhruv';
+}
+
+function handleGautamGuptaClick() {
+  window.location.href = 'http://127.0.0.1:8000/gautam';
+}
+
+
+  </script>
+
+</body>
+
+</html>
